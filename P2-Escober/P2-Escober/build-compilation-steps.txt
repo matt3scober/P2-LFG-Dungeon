@@ -1,0 +1,2 @@
+1.) Input desired values in the config.txt file
+2.) Run P2-Escober.cpp file
