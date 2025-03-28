@@ -169,7 +169,7 @@ void displayStatus() {
             << (instance.active ? "active" : "empty") << std::endl;
     }
 
-    // Display queue information
+    // Display queue info
     {
         std::lock_guard<std::mutex> qLock(queueMutex);
         std::cout << "\nQueue Status:" << std::endl;
@@ -221,11 +221,11 @@ void queueManager() {
             int instanceId = -1;
             {
                 std::lock_guard<std::mutex> lock(instancesMutex);
-                // Check which instances are available
+                // Available instance
                 for (int i = 0; i < static_cast<int>(instances.size()); i++) {
                     if (!instances[i].active) {
                         instanceId = i;
-                        instances[i].active = true;  // Mark as active immediately
+                        instances[i].active = true;  // Mark as active
                         break;
                     }
                 }
@@ -246,14 +246,14 @@ void queueManager() {
                         if (!instance.active) return true;
                     }
                     return false;
-                    });
+                });
             }
         }
         else {
             // Not enough players to form a party, check again after a short delay
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
-            // Check if we can't form any more parties
+            // Check if no parties can form
             if (!canFormParty()) {
                 // Check if any instances are still active
                 bool anyActive = false;
@@ -267,7 +267,7 @@ void queueManager() {
                     }
                 }
 
-                // Only shut down if no instances are active and we can't form any more parties
+                // Only shut down if no active instances and no parties can form
                 if (!anyActive) {
                     shutdown = true;
                 }

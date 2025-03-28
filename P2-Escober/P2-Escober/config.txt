@@ -1,6 +1,6 @@
-max-num-instances 3
+max-num-instances 20
 num-tank 9
 num-healer 9
-num-dps 28
-min-time 2
-max-time 10
+num-dps 27
+min-time 4
+max-time 15
