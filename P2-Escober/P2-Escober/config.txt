@@ -1,0 +1,6 @@
+max-num-instances 3
+num-tank 9
+num-healer 9
+num-dps 28
+min-time 2
+max-time 10
