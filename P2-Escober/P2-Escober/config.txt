@@ -1,4 +1,4 @@
-max-num-instances 20
+max-num-instances 6
 num-tank 9
 num-healer 9
 num-dps 27
